@@ -8,7 +8,7 @@
                  [aleph "0.4.3"]
                  [com.taoensso/timbre "4.10.0"]
                  [environ "1.1.0"]
-                 [http-kit "2.2.0"]]
+                 [http-kit "2.4.0-alpha6"]]
   :main ^:skip-aot clack.example
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

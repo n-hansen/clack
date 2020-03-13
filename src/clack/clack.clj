@@ -4,6 +4,7 @@
             [clojure.core.async :as async]
             [manifold.stream :as ms]
             [org.httpkit.client :as http]
+            [org.httpkit.sni-client :as sni-client]
             [taoensso.timbre :as timbre]))
 
 (def SLACK_API_URL "https://slack.com/api")
@@ -20,7 +21,8 @@
   (future
     (let [opts {:query-params {:token slack-api-token}}
           url (str SLACK_API_URL "/rtm.connect")
-          {:keys [status body error]} @(http/get url opts)]
+          {:keys [status body error]} (binding [org.httpkit.client/*default-client* sni-client/default-client]
+                                        @(http/get url opts))]
       (if error
         nil
         (parse-initial-config body)))))
