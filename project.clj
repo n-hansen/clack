@@ -1,4 +1,4 @@
-(defproject clack "0.1.0"
+(defproject clack "0.1.0-handshakefix"
   :description "Simple bot framework for Slack"
   :url "https://github.com/clack"
   :license {:name "MIT"}
